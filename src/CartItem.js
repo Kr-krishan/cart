@@ -24,22 +24,23 @@ class CartItem extends React.Component{
         //2nd form of setState -> if prevState is required
         this.setState((prevState) => {
             return {
-                qty:this.state.qty+1
+                qty:prevState.qty+1
             }
         })
     }
 
     decreaseQuantity =() => {
-        //console.log('this.state',this.state.qty);
-
+        const{qty}=this.state;
+        if(qty===0){
+            return;
+        }
         //2nd form of setState -> if prevState is required
         this.setState((prevState) => {
-            if(prevState.qty>1){
-                return {
-                    qty:this.state.qty-1
-                }
+            return {
+                qty:prevState.qty-1
             }
-        })
+        });
+       // console.log(this.state);
     }
 
     render(){
