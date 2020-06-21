@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Navbar=(props)=> {
+    //console.log(props.count);
     return (
         <div style={styles.nav}>
             <div style={styles.cartIconContainer} >
                 <img style={styles.cartIcon} alt="" src="https://image.flaticon.com/icons/svg/1170/1170678.svg" />
-                <span style={styles.cartCount} >3</span>
+                <span style={styles.cartCount} >{props.count} </span>
             </div>
         </div>
     );
