@@ -2,45 +2,6 @@ import React from 'react';
 
 class CartItem extends React.Component{
 
-    // constructor(){
-    //     super();
-    //     this.state={
-    //         price:999,
-    //         title: 'Mobile phone',
-    //         qty:1,
-    //         img: ''
-    //     }
-    //     //this.increaseQuantity=this.increaseQuantity.bind(this)
-    // }
-
-    // increaseQuantity =() => {        
-    //     //1st form of setState
-    //     // this.setState({
-    //     //     qty:this.state.qty+1
-    //     // })
-
-    //     //2nd form of setState -> if prevState is required
-    //     this.setState((prevState) => {
-    //         return {
-    //             qty:prevState.qty+1
-    //         }
-    //     })
-    // }
-
-    // decreaseQuantity =() => {
-    //     const{qty}=this.state;
-    //     if(qty===0){
-    //         return;
-    //     }
-    //     //2nd form of setState -> if prevState is required
-    //     this.setState((prevState) => {
-    //         return {
-    //             qty:prevState.qty-1
-    //         }
-    //     });
-    //    // console.log(this.state);
-    // }
-
     render(){
         const{price,qty,title}=this.props.product;
         const{
