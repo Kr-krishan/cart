@@ -62,6 +62,7 @@ class App extends React.Component {
       })
   }
 
+  // increase qty of a product
   handleIncreaseQuantity = (product)=>{
     //console.log("increse qty of this",product);
     const{products}=this.state;
@@ -73,7 +74,7 @@ class App extends React.Component {
     //   products
     // });
 
-    //update qty in firebase
+    //increase qty in firebase
     const docRef=this.db.collection('products').doc(products[index].id);
 
     docRef.update({
@@ -87,6 +88,7 @@ class App extends React.Component {
     })
   }
 
+  // decrease qty of a product
   handleDecreaseQuantity = (product)=>{
     //console.log("decrese qty of this",product);
     const{products}=this.state;
@@ -100,7 +102,7 @@ class App extends React.Component {
     //   products
     // });
 
-    //update qty in firebase
+    //decrease qty in firebase
     const docRef=this.db.collection('products').doc(products[index].id);
 
     if(products[index].qty>0){
@@ -116,14 +118,28 @@ class App extends React.Component {
     }
   }
 
-  handleDeleteQuantity=(id)=>{
-    //console.log("delete",id);
-    const{products}=this.state;
-    const items=products.filter((item)=> id!==item.id);
 
-    this.setState({
-      products:items
-    })
+  // delete a product
+  handleDeleteQuantity=(id)=>{
+    //const{products}=this.state;
+    // const items=products.filter((item)=> id!==item.id);
+
+    // this.setState({
+    //   products:items
+    // })
+
+    //delete product from firebase
+    const docRef=this.db.collection('products').doc(id);
+
+    docRef
+      .delete()
+      .then(()=>{
+        console.log("Deleted successfully");
+      })
+      .catch((error)=>{
+        console.log("error in delete:",error);
+      })
+
   }
 
   getCartCount=()=>{
