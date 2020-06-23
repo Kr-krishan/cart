@@ -15,23 +15,48 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    // firebase
+    //   .firestore()
+    //   .collection('products')
+    //   .get()
+    //   .then((snapshot)=>{
+    //     console.log(snapshot);
+
+    //     snapshot.docs.map((doc)=>{
+    //       console.log(doc.data());
+    //     });
+
+    //     const products=snapshot.docs.map((doc)=>{
+    //       const data=doc.data();
+    //       data['id']=doc.id;
+    //       return data;
+    //     });
+
+    //     this.setState({
+    //       products,
+    //       loading:false
+    //     })
+    //   })
+
+    //calling database
     firebase
       .firestore()
-      .collection('products')
-      .get()
-      .then((snapshot)=>{
+      .collection('products')     //getting collection, named products
+      .onSnapshot((snapshot)=>{    //onsnapShot(listener) automatically reflects changes done in firebase
         console.log(snapshot);
 
+        //getting data from doc in form of object
         snapshot.docs.map((doc)=>{
           console.log(doc.data());
         });
 
         const products=snapshot.docs.map((doc)=>{
           const data=doc.data();
-          data['id']=doc.id;
+          data['id']=doc.id;  //entering id of doc inside data to use it uniquely
           return data;
         });
 
+        //now setting state after getting data
         this.setState({
           products,
           loading:false
